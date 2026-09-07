@@ -80,15 +80,15 @@ reply_via_script() {
     # exitcode is not captured
     local output
     output=$(${command_dir}${cmd} "$@")
-    logdebug "SCRIPT OUTPUT:\n${output}\n"
     local status=$?
+    logdebug "SCRIPT OUTPUT:\n${output}\n"
     logdebug "command ${cmd} exitcode = ${status}"
     if [ "${status}" -eq 0 ]; then
         reply "${output}"
         return 0
     else
         reply "${output}
-command failed with exitcode ${status}"
+		command failed with exitcode ${status}"
         return 1
     fi
 
@@ -209,7 +209,7 @@ elif [ "${logfile}" = "1" ]; then
     logfile=${tmpdir}/bot.log
 fi
 
-echo "\n\n====\n" >> ${logile}
+echo "\n\n====\n" >> ${logfile}
 
 log "started with debug=${debug} longpoll_timeout=${longpoll_timeout} logfile=${logfile} offset=${offset}"
 
